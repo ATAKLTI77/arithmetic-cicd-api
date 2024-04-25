@@ -29,6 +29,6 @@ output application/json
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="ff6a0e8e-ce17-457a-97f4-e216b07d935d" message="---------Arthimetic seccessuffly complete------+++++++"/>
+		<logger level="INFO" doc:name="Logger" doc:id="ff6a0e8e-ce17-457a-97f4-e216b07d935d" message="---------Arthimetic seccessuffly complete------+++++++ API FLOW"/>
 	</flow>
 </mule>
