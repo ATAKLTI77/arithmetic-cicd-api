@@ -2,7 +2,7 @@ http:
    port: "8081"
    
 log:
-  message: "welcome to CI/CD Process"
+  message: "welcome to CI/CD Process here we are learning cicd process"
   
 deployment:
      app:
