@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<global-property doc:name="Global Property" doc:id="17549a9e-9675-4895-a10c-d5552b45e6f6" name="mule" value="env" />
 	<flow name="arithmetic-cicd-apiFlow" doc:id="0b066adb-e600-4978-9596-2269bc87339d" >
 		<http:listener doc:name="Listener" doc:id="053e4ca3-56ec-4a25-8ff7-d4b04904dcbc" config-ref="HTTP_Listener_config" path="/arithmetic"/>
-		<logger level="INFO" doc:name="Logger" doc:id="dec45a2b-6c79-46e7-9051-7a465fae3209" message="-------Arthimetic API is Invoke--------"/>
+		<logger level="INFO" doc:name="Logger" doc:id="dec45a2b-6c79-46e7-9051-7a465fae3209" message="-------Arthimetic API is Invoke---"/>
 		<set-variable value="#[attributes.queryParams.num1]" doc:name="num1" doc:id="964e0771-383d-4c97-9476-b0530960c4b0" variableName="num1"/>
 		<set-variable value="#[attributes.queryParams.num2]" doc:name="num1" doc:id="2a17ceab-5d25-4a13-8fac-b92b0f292c2e" variableName="num2"/>
 		<ee:transform doc:name="Transform Message" doc:id="035ad259-201f-4890-83a2-cf425c91a256" >
@@ -29,6 +29,6 @@ output application/json
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="ff6a0e8e-ce17-457a-97f4-e216b07d935d" message="---------Arthimetic seccessuffly complete------"/>
+		<logger level="INFO" doc:name="Logger" doc:id="ff6a0e8e-ce17-457a-97f4-e216b07d935d" message="---------Arthimetic seccessuffly complete------+++++++"/>
 	</flow>
 </mule>
