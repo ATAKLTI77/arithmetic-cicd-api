@@ -11,4 +11,4 @@ deployment:
      workers: "1"
      workersType: "MICRO"
      
-other: 123
+other: "123"
