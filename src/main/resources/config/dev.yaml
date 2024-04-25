@@ -10,3 +10,5 @@ deployment:
      region: "us-east-2"
      workers: "1"
      workersType: "MICRO"
+     
+other:
