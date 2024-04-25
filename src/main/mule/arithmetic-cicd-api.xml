@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3d07a852-da09-4d40-a9c7-3c0d898d438e" >
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="1bf2fdfc-81cd-4c49-828d-5d4092ab5500" file="config\dev.yaml" />
+	<global-property doc:name="Global Property" doc:id="17549a9e-9675-4895-a10c-d5552b45e6f6" name="mule" value="env" />
+	<flow name="arithmetic-cicd-apiFlow" doc:id="0b066adb-e600-4978-9596-2269bc87339d" >
+		<http:listener doc:name="Listener" doc:id="053e4ca3-56ec-4a25-8ff7-d4b04904dcbc" config-ref="HTTP_Listener_config" path="/arithmetic"/>
+		<logger level="INFO" doc:name="Logger" doc:id="dec45a2b-6c79-46e7-9051-7a465fae3209" message="-------Arthimetic API is Invoke--------"/>
+		<set-variable value="#[attributes.queryParams.num1]" doc:name="num1" doc:id="964e0771-383d-4c97-9476-b0530960c4b0" variableName="num1"/>
+		<set-variable value="#[attributes.queryParams.num2]" doc:name="num1" doc:id="2a17ceab-5d25-4a13-8fac-b92b0f292c2e" variableName="num2"/>
+		<ee:transform doc:name="Transform Message" doc:id="035ad259-201f-4890-83a2-cf425c91a256" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"message": p('log.message'),
+	"addition":(vars.num1 as Number + vars.num2 as Number),
+	"substract":(vars.num1 as Number - vars.num2 as Number),
+	"multiplication":(vars.num1 as Number * vars.num2 as Number),
+	"division":(vars.num1 as Number / vars.num2 as Number)
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="ff6a0e8e-ce17-457a-97f4-e216b07d935d" message="---------Arthimetic seccessuffly complete------"/>
+	</flow>
+</mule>
